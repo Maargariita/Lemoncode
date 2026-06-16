@@ -1,18 +1,18 @@
 import { obtenerPersonajes } from './personajes.api';
-import {Personajes, crearBotonParams} from './personajes.modelo';
+import {Personajes} from './personajes.modelo';
 
 
 
-const buscarPersonaje = (id: string) => {
+/*const buscarPersonaje = (id: string) => {
   window.location.href = `?id=${encodeURIComponent(id)}`;
-};
+};*/
 
 const crearElementoImagen = (
   portada: string,
   titulo: string
 ): HTMLImageElement => {
     const imagen = document.createElement("img");
-    imagen.src = portada;
+    imagen.src = `http://localhost:3000/${portada}`;
     imagen.alt = titulo;
     return imagen;
 };
@@ -23,7 +23,7 @@ const crearElementoParrafo = (texto: string): HTMLParagraphElement => {
     return parrafo;
 };
 
-const crearBoton = (crearBotonParams: crearBotonParams): HTMLButtonElement => {
+/*const crearBoton = (crearBotonParams: crearBotonParams): HTMLButtonElement => {
     const {texto, id, nombreClase, onClick} = crearBotonParams;
     const boton = document.createElement("button");
     boton.textContent = texto;
@@ -34,9 +34,9 @@ const crearBoton = (crearBotonParams: crearBotonParams): HTMLButtonElement => {
     boton.classList.add(nombreClase);
     return boton;
 
-};
+};*/
 
-const crearGrupoBotones = (id: string): HTMLDivElement => {
+/*const crearGrupoBotones = (id: string): HTMLDivElement => {
     const grupoBotones = document.createElement("div");
     grupoBotones.classList.add("grupo-botones");
 
@@ -51,7 +51,7 @@ const crearGrupoBotones = (id: string): HTMLDivElement => {
     grupoBotones.appendChild(botonBuscar);
 
     return grupoBotones;
-};
+};*/
 
 
 const creaContenedorPersonajes = (personaje: Personajes): HTMLDivElement => {
@@ -74,8 +74,8 @@ const creaContenedorPersonajes = (personaje: Personajes): HTMLDivElement => {
    elementoPersonaje.appendChild(habilidades);
   
 
-   const grupoBotones = crearGrupoBotones(personaje.id);
-   elementoPersonaje.appendChild(grupoBotones);
+  // const grupoBotones = crearGrupoBotones(personaje.id);
+   //elementoPersonaje.appendChild(grupoBotones);
 
    return elementoPersonaje;
 };
