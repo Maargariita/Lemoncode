@@ -56,7 +56,7 @@ const crearElementoParrafo = (texto: string): HTMLParagraphElement => {
 
 const creaContenedorPersonajes = (personaje: Personajes): HTMLDivElement => {
    const elementoPersonaje = document.createElement("div");
-   elementoPersonaje.classList.add("pelicula-contenedor");
+   elementoPersonaje.classList.add("personaje-card");
 
    const imagen = crearElementoImagen(personaje.imagen, personaje.nombre);
    elementoPersonaje.appendChild(imagen);

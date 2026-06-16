@@ -92,35 +92,47 @@ textarea {
  position: relative;
 }
 
-
 #listado-personajes {
- width: 85%;
- margin: 0 auto;
+  width: 85%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 0;
 }
 
-.personajes-contenedor {
- display: grid;
- grid-template-columns: 5% repeat(4, 1fr);
- grid-gap: 10px;
- align-items: center;
- justify-content: space-between;
- border: 1px solid #dee2e6;
- padding: 10px;
+.personaje-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #dee2e6;
+  text-align: center;
 }
 
-.personajes-contenedor img {
- max-width: 60px;
+.personaje-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
-.personajes-contenedor {
- display: grid;
- grid-template-columns: 5% repeat(4, 1fr);
- grid-gap: 10px;
- align-items: center;
- justify-content: space-between;
- border: 1px solid #dee2e6;
- padding: 10px;
+@media screen and (max-width: 900px) {
+  #listado-personajes {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
+@media screen and (max-width: 600px) {
+  #listado-personajes {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
 .grupo-botones {
@@ -152,22 +164,6 @@ textarea {
  background-color: var(--bg-color);
  padding: 16px;
  text-align: center;
-}
-
-
-
-@media screen and (max-width: 1200px) {
- .personajes-contenedor {
- grid-template-columns: auto;
- justify-content: center;
- padding: 20px;
- }
- .personajes-contenedor img {
- max-width: 300px;
- }
- .personajes-contenedor p {
- text-align: center;
- }
 }
 
 
