@@ -55,19 +55,19 @@ const pintarPersonajes = async () => {
     const todosLosPersonajes = await obtenerPersonajes();
     const listado = document.querySelector("#listado-personajes");
     const boton = document.querySelector("#button");
-    const textarea = document.querySelector("#personajes");
+    const input = document.querySelector("#personajes");
 
     if (!listado || !(listado instanceof HTMLDivElement)) {
     throw new Error("No se ha encontrado el contenedor de personajes");
   }
 
-  if (!textarea || !(textarea instanceof HTMLTextAreaElement)) {
+  if (!input || !(input instanceof HTMLInputElement)) {
     throw new Error("No se ha encontrado el campo de texto");
   }
 
 
    const filtrarPersonajes = () => {
-    const busqueda = textarea.value.trim().toLowerCase();
+    const busqueda = input.value.trim().toLowerCase();
  
     if (!busqueda) {
       renderizarPersonajes(todosLosPersonajes, listado);
@@ -84,7 +84,7 @@ const pintarPersonajes = async () => {
   renderizarPersonajes(todosLosPersonajes, listado);
  
   boton?.addEventListener("click", filtrarPersonajes);
-  textarea.addEventListener("input", filtrarPersonajes);
+  input.addEventListener("input", filtrarPersonajes);
 };
  
 document.addEventListener("DOMContentLoaded", pintarPersonajes);
