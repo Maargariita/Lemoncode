@@ -1,4 +1,38 @@
-export const estaBienFormadaLaIp = (value: string): boolean => {
+import { isValidIBAN, validateIBAN } from "ibantools";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*export const estaBienFormadaLaIp = (value: string): boolean => {
     const patron = /^(\d{1,3}\.){3}\d$/ ;
 
     return patron.test(value)
@@ -29,4 +63,4 @@ const validarNIF = (value: string): boolean => {
     }
 };
 
-validarNIF("12345678B");
+validarNIF("12345678B");*/
