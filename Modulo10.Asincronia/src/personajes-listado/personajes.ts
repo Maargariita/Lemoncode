@@ -3,10 +3,6 @@ import {Personajes} from './personajes.modelo';
 
 
 
-/*const buscarPersonaje = (id: string) => {
-  window.location.href = `?id=${encodeURIComponent(id)}`;
-};*/
-
 const crearElementoImagen = (
   portada: string,
   titulo: string
@@ -23,35 +19,7 @@ const crearElementoParrafo = (texto: string): HTMLParagraphElement => {
     return parrafo;
 };
 
-/*const crearBoton = (crearBotonParams: crearBotonParams): HTMLButtonElement => {
-    const {texto, id, nombreClase, onClick} = crearBotonParams;
-    const boton = document.createElement("button");
-    boton.textContent = texto;
-    boton.addEventListener("click", () => {
-        onClick(id);
-    });
 
-    boton.classList.add(nombreClase);
-    return boton;
-
-};*/
-
-/*const crearGrupoBotones = (id: string): HTMLDivElement => {
-    const grupoBotones = document.createElement("div");
-    grupoBotones.classList.add("grupo-botones");
-
-    const botonBuscar = crearBoton({
-        texto: "Editar",
-        id: id,
-        nombreClase: "boton-buscar",
-        onClick: () => buscarPersonaje(id),
-    });
-
-
-    grupoBotones.appendChild(botonBuscar);
-
-    return grupoBotones;
-};*/
 
 
 const creaContenedorPersonajes = (personaje: Personajes): HTMLDivElement => {
@@ -73,27 +41,51 @@ const creaContenedorPersonajes = (personaje: Personajes): HTMLDivElement => {
    const habilidades = crearElementoParrafo(personaje.habilidades);
    elementoPersonaje.appendChild(habilidades);
   
-
-  // const grupoBotones = crearGrupoBotones(personaje.id);
-   //elementoPersonaje.appendChild(grupoBotones);
-
    return elementoPersonaje;
 };
 
-
-const pintarPersonajes = async () => {
-    const personajes = await obtenerPersonajes();
-    const listado = document.querySelector("#listado-personajes");
-
-    if(listado && listado instanceof HTMLDivElement) {
-        personajes.forEach((personaje) => {
-             const contenedorPersonajes = creaContenedorPersonajes(personaje);
-             listado.appendChild(contenedorPersonajes);
-        });
-    } else {
-        throw new Error ("No se ha encontrado ningún personaje");
-
-    }
+const renderizarPersonajes = (personajes: Personajes[], listado: HTMLDivElement) => {
+    listado.innerHTML = "";
+    personajes.forEach((personaje) => {
+        listado.appendChild(creaContenedorPersonajes(personaje));
+    });
 };
 
+const pintarPersonajes = async () => {
+    const todosLosPersonajes = await obtenerPersonajes();
+    const listado = document.querySelector("#listado-personajes");
+    const boton = document.querySelector("#button");
+    const textarea = document.querySelector("#personajes");
+
+    if (!listado || !(listado instanceof HTMLDivElement)) {
+    throw new Error("No se ha encontrado el contenedor de personajes");
+  }
+
+  if (!textarea || !(textarea instanceof HTMLTextAreaElement)) {
+    throw new Error("No se ha encontrado el campo de texto");
+  }
+
+
+   const filtrarPersonajes = () => {
+    const busqueda = textarea.value.trim().toLowerCase();
+ 
+    if (!busqueda) {
+      renderizarPersonajes(todosLosPersonajes, listado);
+      return;
+    }
+ 
+    const filtrados = todosLosPersonajes.filter((p) =>
+      p.nombre.toLowerCase().includes(busqueda)
+    );
+ 
+    renderizarPersonajes(filtrados, listado);
+  };
+ 
+  renderizarPersonajes(todosLosPersonajes, listado);
+ 
+  boton?.addEventListener("click", filtrarPersonajes);
+  textarea.addEventListener("input", filtrarPersonajes);
+};
+ 
 document.addEventListener("DOMContentLoaded", pintarPersonajes);
+ 
