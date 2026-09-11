@@ -34,6 +34,30 @@ resultado = validarDominio.test("elmundo.com");
 console.log("elmundo.com", resultado);
 
 
+const validarNumero = /^[^@$&]$/;
+resultado = validarNumero.test("1");
+console.log("1", resultado);
+
+
+const caracteres = /^...$/;
+const letras = /^\w$/;
+// Para que contenga /^\w$/ en minúscula y que no contega /^\W$/ en mayúscula;
+resultado = letras.test("&1");
+console.log("&1", resultado);
+const noContiene = /^\W$/;
+resultado = noContiene.test("@");
+console.log("@", resultado);
+
+const digitos = /^\d$/;
+resultado = digitos.test("1");
+console.log("1", resultado);
+//Para que no incluya D en mayus.
+
+// /s espacio en blanco y con S mayus sin espacio.
+
+const validarDNI = /^\d\d\d\d\d\d\d\d\s[A-Z]$/;
+resultado = validarDNI.test("12345678 Y");
+console.log("12345678 Y", resultado);
 
 
 
