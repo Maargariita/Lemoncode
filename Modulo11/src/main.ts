@@ -1,15 +1,37 @@
-import { isValidIBAN, validateIBAN } from "ibantools";
+
+// imagenA
+// imagenB
+// imagenC
+// imagen9
 
 
+// imagen
+// imagenAA
+
+const myregex = /^imagen\..$/;
 
 
+let resultado = myregex.test("imagenA");
+console.log("imagenA", resultado);
+
+resultado = myregex.test("imag");
+console.log("imag", resultado);
+
+resultado = myregex.test("holaimagen0");
+console.log("holaimagen0", resultado);
 
 
+const myregexx = /^\.txt\.$/;
 
 
+const validarWeb =/^https:\/\//;
 
+const validarDominio = /\....$/;
+resultado = validarDominio.test("elmundo.es");
+console.log("elmundo.es", resultado);
 
-
+resultado = validarDominio.test("elmundo.com");
+console.log("elmundo.com", resultado);
 
 
 
