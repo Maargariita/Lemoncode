@@ -59,6 +59,40 @@ const validarDNI = /^\d\d\d\d\d\d\d\d\s[A-Z]$/;
 resultado = validarDNI.test("12345678 Y");
 console.log("12345678 Y", resultado);
 
+//Patrones de repetición /^\d{nº de veces que se repite el patrón}\s(espacio)[A-Z]{Nº de letras que sean}$/
+
+const matricula = /^\d{4}\s[A-Z]{3}$/;
+resultado = matricula.test("1234 BKP");
+console.log("1234 BKP", resultado);
+
+// Decimales {nº con coma detrás}
+
+const matriculaAntes = /^[A-Z]{1,2}\s\d{4,5}\s[A-Z]{0,2}$/;
+resultado = matriculaAntes.test("BB 1234 BB");
+console.log("BB 1234 BB", resultado);
+
+// Validar espacios
+
+const espacioOpcional = /^\d{8}\s?[A-Z]$/;
+resultado = espacioOpcional.test("12345678A");
+console.log("12345678A", resultado);
+
+// validar extensión  * para cero o más
+
+const extension = /^imagen\d*\.png$/;
+resultado = extension.test("imagen123.png");
+console.log("imagen123.png", resultado);
+
+// si tiene que incluir algo más que imagen +
+
+const añadir = /^imagen_\d+\.png$/;
+resultado = añadir.test("imagen_01.png");
+console.log("imagen_01.png", resultado);
+
+
+// ? opciopnal . () | () 
+// gm al final multiples líneas
+
 
 
 
