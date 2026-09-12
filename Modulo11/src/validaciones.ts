@@ -3,3 +3,17 @@ export const validarExtensionDeFichero = (value : string) : boolean => {
 
     return patron.test(value);
 }
+
+export const estaBienFormadaLaIP = (value: string): boolean => {
+    const patron = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
+
+    return patron.test(value);
+}
+
+export const estaBienFormadoElNIF = (value: string): boolean => {
+    const patron = /^\d{2}\.?\d{3}\.?\d{3}\.?\-?\_?\s?[a-zA-Z]$/;
+
+
+    return patron.test(value);
+}
+

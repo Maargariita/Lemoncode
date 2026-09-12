@@ -93,7 +93,26 @@ console.log("imagen_01.png", resultado);
 // ? opciopnal . () | () 
 // gm al final multiples líneas
 
+const validarNIF = (value: string): boolean => {
+ const patronNuevo = /^(?<parteNumerica>\d{8})(\s|-|_)?(?<letra>[A-Za-z])$/;
 
+const coincidencia =patronNuevo.exec(value);
+ 
+if(coincidencia) {
+    const {parteNumerica, letra} = coincidencia.groups as any;
+    const numeroLimpio = parteNumerica.replace(/\./g, "");
+    console.log("La parte numérica es:", numeroLimpio);
+    console.log("La letra es:", letra);
+    return true;
+} else {
+    console.log("Algo ha fallado")
+    return false;
+}
+}
+
+validarNIF("12345678Q");
+
+// si al final añades i pasa a ser insensitive; g global; m multilinea;
 
 
 
