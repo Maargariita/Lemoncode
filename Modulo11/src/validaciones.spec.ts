@@ -1,4 +1,4 @@
-import { validarExtensionDeFichero, estaBienFormadaLaIP,estaBienFormadoElNIF } from "./validaciones";
+import { validarExtensionDeFichero, estaBienFormadaLaIP,estaBienFormadoElNIF, validarIban } from "./validaciones";
 
 describe('validarExtensionDeFichero', () => {
     test.each([
@@ -52,6 +52,25 @@ describe("estaBienFormadoElNIF", () => {
  "Deberia devolver para el NIF %s el valor %s",
  (valor: string, expected: boolean) => {
  expect(estaBienFormadoElNIF(valor)).toBe(expected);
+ }
+ );
+});
+
+
+describe("validarIban", () => {
+ test.each([
+ ["ES21 1465 0100 72 2030876293", true],
+ ["ES2114650100722030876293", true],
+ ["ES21-1465-0100-72-2030876293", true],
+ ["ES6621000418401234567891", true],
+ ["6621000418401234567891", false],
+ ["1234567890", false],
+ ["ABCDEFG", false],
+ ["ES21_1465_0100_72_2030876293", false]
+ ])(
+ "Deberia devolver para el NIF %s el valor %s",
+ (valor: string, expected: boolean) => {
+ expect(validarIban(valor)).toBe(expected);
  }
  );
 });
